@@ -15,10 +15,10 @@ styledPage :: forall p i. Array (StyledComponent) -> Array (HH.HTML p i) -> HH.H
 ```
 
 First argument is ``Array (StyledComponent)`` which means array (``[]``) of our styled html elements.<br />
-Second arguments is a ``Array (HH.HTML p i)`` which means array (``[]``) html elements.<br />
-You must list all StyledComponent elements in first argument to use them in second argument.
+Second arguments is a ``Array (HH.HTML p i)`` which means array (``[]``) of html elements.<br />
+You must list all ``StyledComponent`` elements in first argument to use them in second argument.
 
-Then ``styledPage`` function must be used as wrapper in render function in halogen architecture.<br />
+So ``styledPage`` function must be used as wrapper in render function in halogen architecture.<br />
 
 # How to Create StypedComponent
 It's easy, you must use ``StyledComponent`` type and function ``styled`` from ``CSS.Styled`` module.<br />
