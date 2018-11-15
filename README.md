@@ -9,19 +9,19 @@ Just type ``bower install && pulp server`` in your terminal and open ``localhost
 # Guide
 It meant to be used with purescript-halogen and purescript-css
 
-You must use ``styledPage`` function from CSS.Styled, it's type:
+You must use ``styledPage`` function from ``CSS.Styled`` module, it has type:
 ```purescript
 styledPage :: forall p i. Array (StyledComponent) -> Array (HH.HTML p i) -> HH.HTML p i
 ```
 
-First argument is ``Array (StyledComponent)`` which means array (``[]``) of StyledComponents.
-Second arguments is a ``Array (HH.HTML p i)`` which means array (``[]``) html elements.
+First argument is ``Array (StyledComponent)`` which means array (``[]``) of our styled html elements.<br />
+Second arguments is a ``Array (HH.HTML p i)`` which means array (``[]``) html elements.<br />
 You must list all StyledComponent elements in first argument to use them in second argument.
 
-Then ``styledPage`` function must be used as wrapper in render function in halogen architecture.
+Then ``styledPage`` function must be used as wrapper in render function in halogen architecture.<br />
 
 # How to Create StypedComponent
-It's easy, you must use ``StyledComponent`` type and function ``styled`` from CSS.Styled.
+It's easy, you must use ``StyledComponent`` type and function ``styled`` from ``CSS.Styled`` module.<br />
 Example:
 ```purescript
 labelStyled :: StyledComponent
@@ -35,6 +35,6 @@ Now you can place it in your ``styledPage`` like that:
 styledPage
     [ labelStyled
     ]
-    [ labelStyled.element [] []
+    [ labelStyled.element [] [ HH.text "It works!" ]
     ]
 ```
