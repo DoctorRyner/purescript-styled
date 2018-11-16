@@ -29,7 +29,7 @@ labelStyled = styled label $ do
     fontSize $ px 18.0
     marginRight $ px 20.0
 ```
-First arguments to styled function must be ``ElementName`` (they are placed in ``CSS.Styled`` module with corresponding html tag name) name of html element and second argument must be StyleM Unit block.
+First arguments to styled function must be ``ElementName`` (they are placed in ``CSS.Styled`` module with corresponding html tag name) name of html element and second argument must be `StyleM Unit` block.
 Now you can place it in your ``styledPage`` like that:
 ```purescript
 styledPage
