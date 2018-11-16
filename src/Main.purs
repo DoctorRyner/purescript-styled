@@ -2,8 +2,8 @@ module Main where
 
 import Halogen.VDom.Driver (runUI)
 
-import CSS hiding (render, label)
-import CSS.Styled (Styled, styled, styledPage, label)
+import CSS hiding (render, label, div)
+import CSS.Styled (Styled, styled, styledPage, label, div)
 import Data.Maybe (Maybe(..))
 import CSS.Extra (custom)
 import Effect (Effect)
@@ -31,7 +31,7 @@ labelStyled = styled label $ do
 
 -- div with gray background
 divStyled :: Styled
-divStyled = styled label $
+divStyled = styled div $
     custom "background-color" "#dadada"
 
 -- RENDER
