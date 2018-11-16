@@ -1,16 +1,17 @@
 module Main where
 
-import Halogen.VDom.Driver (runUI)
+import CSS
+import Prelude
 
-import CSS hiding (render, label, div)
-import CSS.Styled (Styled, styled, styledPage, label, div)
-import Data.Maybe (Maybe(..))
 import CSS.Extra (custom)
+import CSS.Styled (PageElement, PageElementComposition, Styled, div, fromStyled, img, label, styled, styledPage, toPageElement)
+import Data.Maybe (Maybe(..))
 import Effect (Effect)
 import Halogen as H
 import Halogen.Aff as HA
 import Halogen.HTML as HH
-import Prelude (Unit, Void, bind, const, pure, unit, ($), discard)
+import Halogen.HTML.Properties as HP
+import Halogen.VDom.Driver (runUI)
 
 -- QUERY
 data Query a = Unit a
@@ -27,12 +28,14 @@ initialState = unit
 labelStyled :: Styled
 labelStyled = styled label $ do
     fontSize $ px 18.0
-    marginRight $ px 20.0
 
 -- div with gray background
 divStyled :: Styled
 divStyled = styled div $
     custom "background-color" "#dadada"
+
+logo :: Styled
+logo = styled img <<< width $ px 10.0
 
 -- RENDER
 render :: State -> H.ComponentHTML Query
@@ -44,10 +47,10 @@ render state =
         , divStyled
         ]
         -- html section bellow
-        [ labelStyled.element [] [ HH.text "styled label" ]
+        [ fromStyled (labelStyled) [] [ HH.text "styled label" ]
         , HH.p [] [ HH.text "mere p" ]
-        , divStyled.element []
-            [ labelStyled.element []
+        , fromStyled (divStyled) []
+            [ fromStyled (labelStyled) []
                 [ HH.text "styled label inside styled div with gray background" 
                 ]
             ]
