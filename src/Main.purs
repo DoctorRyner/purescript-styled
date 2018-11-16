@@ -1,16 +1,15 @@
 module Main where
 
-import CSS
-import Prelude
+import CSS (fontSize, px, width)
+import Prelude (Unit, Void, bind, const, pure, unit, ($), (<<<))
 
 import CSS.Extra (custom)
-import CSS.Styled (PageElement, PageElementComposition, Styled, div, fromStyled, img, label, styled, styledPage, toPageElement)
+import CSS.Styled (Styled, div, img, label, styled, styledPage)
 import Data.Maybe (Maybe(..))
 import Effect (Effect)
 import Halogen as H
 import Halogen.Aff as HA
 import Halogen.HTML as HH
-import Halogen.HTML.Properties as HP
 import Halogen.VDom.Driver (runUI)
 
 -- QUERY
@@ -47,13 +46,7 @@ render state =
         , divStyled
         ]
         -- html section bellow
-        [ fromStyled (labelStyled) [] [ HH.text "styled label" ]
-        , HH.p [] [ HH.text "mere p" ]
-        , fromStyled (divStyled) []
-            [ fromStyled (labelStyled) []
-                [ HH.text "styled label inside styled div with gray background" 
-                ]
-            ]
+        [ divStyled.html [] []
         ]
 
 -- EVAL
