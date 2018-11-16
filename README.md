@@ -20,16 +20,16 @@ You must list all ``Styled`` elements (just once each element) in first argument
 
 So ``styledPage`` function must be used as wrapper in render function in halogen architecture.<br />
 
-# How to Create StypedComponent
+# How to Create Styped (Component)
 It's easy, you must use ``Styled`` type and function ``styled`` from ``CSS.Styled`` module.<br />
 Example:
 ```purescript
 labelStyled :: Styled
-labelStyled = styled "label" $ do
+labelStyled = styled label $ do
     fontSize $ px 18.0
     marginRight $ px 20.0
 ```
-First arguments to styled function must be ``String`` name of html element and second argument must be StyleM Unit block.
+First arguments to styled function must be ``ElementName`` (they are placed in ``CSS.Styled`` module with corresponding html tag name) name of html element and second argument must be StyleM Unit block.
 Now you can place it in your ``styledPage`` like that:
 ```purescript
 styledPage
