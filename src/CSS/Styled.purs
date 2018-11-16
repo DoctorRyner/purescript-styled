@@ -16,9 +16,9 @@ type ElementProducer = forall t5 t6 t7. Array (IProp t7 t5) -> Array (HH.HTML t6
 
 type ElementName = { value :: String }
 
-type Styled = ElementName -> StyleM Unit -> StyledComponent
+type StyledComponent = ElementName -> StyleM Unit -> Styled
 
-type StyledComponent =
+type Styled =
     { id :: H.ClassName
     , localStyle :: StyleM Unit
     , element :: ElementProducer
@@ -150,7 +150,7 @@ var = name "var" :: ElementName
 video = name "video" :: ElementName
 wbr = name "wbr" :: ElementName
 
-styled :: Styled
+styled :: StyledComponent
 styled elName gottenStyle =
     { id: newClassName
     , localStyle: gottenStyle
@@ -159,8 +159,7 @@ styled elName gottenStyle =
 
     where newClassName = CssExtra.newClass unit
 
-
-styledPage :: forall p i. Array (StyledComponent) -> Array (HH.HTML p i) -> HH.HTML p i
+styledPage :: forall p i. Array (Styled) -> Array (HH.HTML p i) -> HH.HTML p i
 styledPage components htmlElements =
     HH.div [] $
         [ CssExtra.generateStyle $ CssExtra.composedStylesheet $ map (\tmp -> CssExtra.class_ tmp.id ? tmp.localStyle) components ]

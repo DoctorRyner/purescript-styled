@@ -3,7 +3,7 @@ module Main where
 import Halogen.VDom.Driver (runUI)
 
 import CSS hiding (render, label)
-import CSS.Styled (StyledComponent, styled, styledPage, label)
+import CSS.Styled (Styled, styled, styledPage, label)
 import Data.Maybe (Maybe(..))
 import CSS.Extra (custom)
 import Effect (Effect)
@@ -24,13 +24,13 @@ initialState = unit
 -- CSS
 
 -- some styled label
-labelStyled :: StyledComponent
+labelStyled :: Styled
 labelStyled = styled label $ do
     fontSize $ px 18.0
     marginRight $ px 20.0
 
 -- div with gray background
-divStyled :: StyledComponent
+divStyled :: Styled
 divStyled = styled label $
     custom "background-color" "#dadada"
 
@@ -45,6 +45,7 @@ render state =
         ]
         -- html section bellow
         [ labelStyled.element [] [ HH.text "styled label" ]
+        , HH.p [] [ HH.text "mere p" ]
         , divStyled.element []
             [ labelStyled.element []
                 [ HH.text "styled label inside styled div with gray background" 
