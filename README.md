@@ -20,7 +20,7 @@ You must list all ``Styled`` elements (just once each element) in first argument
 
 So ``styledPage`` function must be used as wrapper in render function in halogen architecture.<br />
 
-# How to Create Styped (Component)
+# How to Create Styled (Component)
 It's easy, you must use ``Styled`` type and function ``styled`` from ``CSS.Styled`` module.<br />
 Example:
 ```purescript
